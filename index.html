@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>The South Texas News Journal</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background: #fefefe;
+        font-family:
+          system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      }
+
+      header {
+        height: 4.5rem;
+        background: linear-gradient(
+          to bottom right,
+          rgb(0, 0, 0),
+          rgb(0, 53, 228)
+        );
+        margin-bottom: 0;
+      }
+
+      a {
+        color: #fef0e0;
+        text-decoration: none;
+      }
+
+      div.title {
+        font-size: clamp(1.75rem, 4vw, 5.6rem);
+        text-align: center;
+        font-weight: 800;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.99);
+        letter-spacing: -0.02em;
+        padding: 0;
+        margin: 0;
+        color: #ff9900;
+        font-family: "Times New Roman", Georgia, serif;
+        line-height: 4.5rem;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 2.25fr 1.23fr;
+        grid-template-rows: auto auto auto auto auto;
+        gap: 5px;
+        grid-template-areas:
+          "nav nav"
+          "item1 item2"
+          "item3 item4"
+          "item5 item6"
+          "item7 item8";
+        min-height: 100vh;
+        max-width: 1600px;
+        margin: 0 auto;
+        background: #fff6ed;
+      }
+
+      nav {
+        grid-area: nav;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(114, 0, 0);
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0 10px 0;
+      }
+
+      .logo,
+      nav .logo {
+        font-size: 2rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: aqua;
+        opacity: 0.85;
+        transition: opacity 0.2s ease-in-out;
+        letter-spacing: 1px;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo:hover,
+      nav .logo:hover {
+        opacity: 1;
+      }
+
+      a.logo {
+        padding: 0 16px 0;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        opacity: 0.8;
+        transition: opacity 0.25s ease;
+        cursor: pointer;
+        color: white;
+        font-family: "Inter", system-ui, sans-serif;
+        letter-spacing: 0.3px;
+        padding: 0.75rem 1rem;
+        border-radius: 4px;
+        touch-action: manipulation;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul li:hover,
+      nav ul li:focus {
+        opacity: 1;
+      }
+
+      #menu-icon {
+        font-size: 2.8rem;
+        display: none;
+        color: white;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+        touch-action: manipulation;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .item1 {
+        background: linear-gradient(
+          to bottom right,
+          rgb(0, 0, 0),
+          rgb(228, 110, 0)
+        );
+        grid-area: item1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.5px 15px 0.5px;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 240, 0.1);
+        min-height: 300px;
+      }
+
+      .item2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: item2;
+        overflow: hidden;
+        background: #581a1a;
+        min-height: 300px;
+      }
+
+      .item2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.2s ease;
+      }
+
+      .item3 {
+        min-height: 300px;
+        background: linear-gradient(
+          to bottom right,
+          rgb(0, 0, 0),
+          rgb(255, 0, 0)
+        );
+        grid-area: item3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      .item4 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: item4;
+        overflow: hidden;
+        background: #581a1a;
+        min-height: 300px;
+      }
+
+      .item4 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.2s ease;
+      }
+
+      .item5 {
+        background: linear-gradient(
+          to bottom right,
+          rgb(0, 0, 0),
+          rgb(55, 0, 255)
+        );
+        grid-area: item5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1.5rem;
+        min-height: 300px;
+      }
+
+      .item6 {
+        grid-area: item6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: #581a1a;
+        min-height: 300px;
+      }
+
+      .item6 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .item7 {
+        background: linear-gradient(
+          to bottom right,
+          rgb(0, 0, 0),
+          rgb(82, 182, 0)
+        );
+        grid-area: item7;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1.5rem;
+        min-height: 300px;
+      }
+
+      .item8 {
+        grid-area: item8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background: #581a1a;
+        min-height: 300px;
+      }
+
+      .item8 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      h1 {
+        text-align: center;
+        padding: 0.5rem;
+        font-family: "Source Serif Pro", "Times New Roman", serif;
+        font-weight: 900;
+        font-size: 5em;
+        color: rgb(255, 187, 0);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
+        margin-bottom: 0;
+        line-height: 1.2;
+        word-break: break-word;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 3.25rem;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 500;
+        font-style: oblique;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.99);
+        padding: 0.8rem 1rem;
+        color: #fef0e0;
+        letter-spacing: 0.2px;
+        word-break: break-word;
+      }
+
+      h3 {
+        font-size: 1.65rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.99);
+        text-align: center;
+        text-decoration: none;
+        padding: 5px 15px 5px;
+        margin: 0;
+        color: rgb(255, 255, 255);
+        background: linear-gradient(
+          to bottom right,
+          rgb(255, 217, 0),
+          rgb(255, 0, 0)
+        );
+        word-break: break-word;
+      }
+
+      .item3 h2.lato-thin {
+        font-family: "Cormorant Garamond", "Times New Roman", serif;
+        font-weight: 400;
+        font-style: italic;
+        color: #fff2e6;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 18px;
+        backdrop-filter: blur(1px);
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        header {
+          height: 3.5rem;
+          padding-top: 0.25rem;
+          padding-bottom: 0.25rem;
+        }
+
+        div.title {
+          line-height: 3.5rem;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        h3 {
+          font-size: 1.25rem;
+          padding: 0.75rem;
+        }
+
+        .container {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          max-width: 100%;
+        }
+
+        nav {
+          flex-direction: column;
+          gap: 0.5rem;
+          padding: 0.75rem;
+          width: 100%;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 0;
+          width: 100%;
+        }
+
+        nav ul li {
+          width: 100%;
+          text-align: center;
+          padding: 0 15px 0;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+        }
+
+        .logo {
+          width: 100%;
+          text-align: center;
+          padding: 0.75rem;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.5rem;
+        }
+
+        #menu-icon {
+          display: flex;
+          min-height: 0px;
+          min-width: 0px;
+        }
+
+        .item1,
+        .item2,
+        .item3,
+        .item4,
+        .item5,
+        .item6,
+        .item7,
+        .item8 {
+          min-height: 150px;
+          padding: 1rem;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 420px) {
+        header {
+          height: 3rem;
+        }
+
+        div.title {
+          line-height: 3rem;
+          font-size: clamp(1.25rem, 3vw, 2rem);
+        }
+
+        h1 {
+          font-size: 1.75rem;
+          padding: 0.5rem 0.25rem;
+        }
+
+        h2 {
+          font-size: 1.1rem;
+          padding: 0.5rem 0.25rem;
+        }
+
+        h3 {
+          font-size: 1rem;
+          padding: 0.5rem 0.5rem;
+        }
+
+        nav {
+          padding: 0 15px 0;
+        }
+
+        nav ul li {
+          padding: 0.75rem;
+          font-size: 0.95rem;
+          min-height: 40px;
+        }
+
+        .logo {
+          font-size: 2.25rem;
+          padding: 0;
+          min-height: 40px;
+        }
+
+        #menu-icon {
+          min-height: 40px;
+          min-width: 40px;
+        }
+
+        .item1,
+        .item2,
+        .item3,
+        .item4,
+        .item5,
+        .item6,
+        .item7,
+        .item8 {
+          min-height: 200px;
+          padding: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="title">The South Texas News Journal</div>
+    </header>
+
+    <h3>
+      <strong
+        ><a
+          href="https://www.archives.gov/founding-docs/constitution-transcript"
+          >Special Report: Foundations of Liberty in the U.S. Constitution</a
+        ></strong
+      >
+    </h3>
+
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">TOPICS</a>
+        <ul>
+          <li>
+            <a href="https://www.nbcnews.com/" target="_blank">US NEWS</a>
+          </li>
+          <li>
+            <a href="https://thetexan.news/" target="_blank">TEXAS NEWS</a>
+          </li>
+          <li>
+            <a href="https://portofharlingen.com/news/" target="_blank"
+              >LOCAL NEWS</a
+            >
+          </li>
+          <li>
+            <a href="https://visitharlingentexas.com/birding/" target="_blank"
+              >WILD LIFE</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="item1">
+        <h1>The Forever War</h1>
+        <h2>
+          <a
+            href="https://www.cbsnews.com/live-updates/iran-us-war-talks-no-progress-israel-lebanon-hezbollah/"
+            target="_blank"
+          >
+            Future Implications of the 2026 US-Iran Conflict</a
+          >
+        </h2>
+      </div>
+
+      <div class="item2">
+        <img src="images/jet.jpg" alt="Military jet aircraft" />
+      </div>
+
+      <div class="item3">
+        <h1>Empire of Dragons</h1>
+        <h2>
+          <a href="https://www.army.mil/" target="_blank"
+            >America's Military Strategy for Confronting China</a
+          >
+        </h2>
+      </div>
+
+      <div class="item4">
+        <img src="images/battle.png" alt="Military conflict scene" />
+      </div>
+
+      <div class="item5">
+        <h1>State of Affairs</h1>
+        <h2>
+          <a
+            href="https://www.wsj.com/topics/place/latin-america?eafs_enabled=false"
+            target="_blank"
+            >Challenges for Secretary Rubio In Latin America</a
+          >
+        </h2>
+      </div>
+
+      <div class="item6">
+        <img src="images/southamerican.png" alt="South American landscape" />
+      </div>
+
+      <div class="item7">
+        <h1>Crisis Averted</h1>
+        <h2><a href="https://www.nationsreportcard.gov/" target="_blank">Teaching Our Youth in a Demanding World</a></h2>
+      </div>
+
+      <div class="item8">
+        <img src="images/student.jpg" alt="Student in classroom" />
+      </div>
+    </div>
+  </body>
+</html>
